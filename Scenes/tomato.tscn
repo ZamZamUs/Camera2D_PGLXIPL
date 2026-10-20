@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dx1a278vmt8y4"]
+
+[ext_resource type="Script" uid="uid://cj5cixxh155yx" path="res://Scenes/tomato.gd" id="1_pjj58"]
+[ext_resource type="Texture2D" uid="uid://dkqk1igyhhxbd" path="res://Assets/Images/Tomato/TomatoWarna.png" id="2_bnlwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h05cf"]
+atlas = ExtResource("2_bnlwl")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m2ru"]
+atlas = ExtResource("2_bnlwl")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51qx7"]
+atlas = ExtResource("2_bnlwl")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcoc7"]
+atlas = ExtResource("2_bnlwl")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jjgbg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h05cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m2ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51qx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcoc7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjj58"]
+radius = 11.045361
+
+[node name="Tomato" type="Area2D" unique_id=178404276]
+script = ExtResource("1_pjj58")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1535660780]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jjgbg")
+frame_progress = 0.2543648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=759568160]
+shape = SubResource("CircleShape2D_pjj58")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
